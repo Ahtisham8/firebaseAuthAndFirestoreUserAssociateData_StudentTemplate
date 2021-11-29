@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+    <EditText
+        android:id="@+id/nameTV"
+        style="@style/myEditText"
+        android:hint="Enter Name to Create an account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/topMarginTopItem" />
+
+    <EditText
+        android:id="@+id/emailTV"
+        style="@style/myEditText"
+        android:hint="Enter Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTV" />
+
+    <EditText
+        android:id="@+id/passwordTV"
+        style="@style/myEditText"
+        android:hint="Enter Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTV" />
+
+    <!--
+    Notice the Constraints of the buttons aren't hardcoded
+    The top margin is the same spacing of the EditTexts
+    and their Left and Right edges are connected to the Left
+    and Right edges of the bottom EditText
+
+    I did this by clicking on the left circle of the Sign in
+    button and connecting it to the left circle of Enter
+    Password.  Then I clicked on the right circle of Sign Up
+    and connected it to the right circle of Enter Password.
+    Now, regardless of device dimensions, the EditText will
+    be centered, and the buttons will be adjusted so that
+    their left and right most edges line up with the ET to
+    give nice clean visual lines
+        -->
+
+    <Button
+        android:id="@+id/signInButton"
+        style="@style/myButton"
+        android:text="Sign in"
+        android:onClick="signIn"
+        app:layout_constraintStart_toStartOf="@+id/passwordTV"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
+
+    <Button
+        android:id="@+id/showListButton"
+        style="@style/myButton"
+        android:text="Show List"
+        android:onClick="showList"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/passwordTV"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        style="@style/myButton"
+        android:text="Sign Up"
+        android:onClick="signUp"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTV"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
+
+    <Button
+        android:id="@+id/addItemButton"
+        style="@style/myButton"
+        android:text="Add Item"
+        android:onClick="addData"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTV"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
+
+
+    <TextView
+        android:id="@+id/signUpResultTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="hiiiiiiii"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+
+    <Button
+        android:id="@+id/signOutButton"
+        style="@style/myButton"
+        android:layout_marginTop="120dp"
+        android:onClick="signOutUser"
+        android:text="Sign Out"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

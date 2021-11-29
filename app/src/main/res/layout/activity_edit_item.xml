@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditItemActivity">
+
+    <Button
+        android:id="@+id/signOutButton2"
+        style="@style/myButton"
+        android:onClick="goHome"
+        android:text="Home"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signOutButton" />
+
+    <EditText
+        android:id="@+id/itemNameET"
+        style="@style/myEditText"
+        android:ems="10"
+        android:hint="Name of item"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/topMarginTopItem"/>
+
+    <EditText
+        android:id="@+id/itemLocation"
+        style="@style/myEditText"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Store or url"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemNameET" />
+
+    <Button
+        android:id="@+id/addItemButton"
+        style="@style/submitButton"
+        android:onClick="updateData"
+        android:text="Edit item"
+        app:layout_constraintEnd_toEndOf="@+id/itemLocation"
+        app:layout_constraintTop_toBottomOf="@+id/itemLocation" />
+
+    <Button
+        android:id="@+id/showListButton"
+        style="@style/myButton"
+        android:text="Delete"
+        android:onClick="deleteItem"
+        app:layout_constraintStart_toStartOf="@+id/itemLocation"
+        app:layout_constraintTop_toBottomOf="@+id/itemLocation" />
+
+    <Button
+        android:id="@+id/signOutButton"
+        style="@style/myButton"
+        android:onClick="showList"
+        android:text="Show List"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="120dp"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemLocation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
