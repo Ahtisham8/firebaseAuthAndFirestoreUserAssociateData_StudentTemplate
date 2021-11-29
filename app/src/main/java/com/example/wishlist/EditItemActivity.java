@@ -33,7 +33,7 @@ public class EditItemActivity extends AppCompatActivity {
         String docID = w.getDocID();
         w.setItemLocation(newLocation);
         w.setItemName(newName);
-        MainActivity.firebaseHelper.editData(w);
+        // firebaseHelper code
         Toast.makeText(this, "Data updated", Toast.LENGTH_SHORT).show();
     }
 
@@ -45,7 +45,7 @@ public class EditItemActivity extends AppCompatActivity {
     }
 
     public void deleteItem(View v) {
-        MainActivity.firebaseHelper.deleteData(w);
+        // firebaseHelper code
         Toast.makeText(this, "Data updated", Toast.LENGTH_SHORT).show();
     }
 

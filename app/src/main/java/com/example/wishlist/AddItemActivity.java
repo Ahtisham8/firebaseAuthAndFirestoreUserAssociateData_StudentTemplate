@@ -43,8 +43,9 @@ public class AddItemActivity extends AppCompatActivity {
         itemPriority = 1;       // may update later w spinner
 
         WishListItem wishListItem = new WishListItem(itemName, itemLocation, itemPriority);
-        MainActivity.firebaseHelper.addData(wishListItem);
+        //insert firebaseHelper code to addData
         nameET.setText("");
         locationET.setText("");
+
     }
 }

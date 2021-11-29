@@ -27,17 +27,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView signUpResultTextView;
     private Button signInButton, signUpButton, signOutButton, showListButton, addItemButton;
 
-    public static FirebaseHelper firebaseHelper;
-   // private FirebaseAuth mAuth;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "set layout in onCreate");
-        firebaseHelper = new FirebaseHelper();
-        //mAuth = FirebaseAuth.getInstance();
+
+        // create fireaseHelper variable
 
         // Make references to xml elements
         nameET = findViewById(R.id.nameTV);
@@ -58,14 +56,12 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-         updateIfLoggedIn();
+        updateIfLoggedIn();
     }
 
     public void updateIfLoggedIn(){
-        FirebaseUser user = firebaseHelper.getmAuth().getCurrentUser();
+        //firebaseHelper code to check for current user
         if (user != null) {
-            firebaseHelper.updateUid(user.getUid());
-            signUpResultTextView.setText(user.getEmail() + " signed in");
             signInButton.setVisibility(View.INVISIBLE);
             signUpButton.setVisibility(View.INVISIBLE);
             signOutButton.setVisibility(View.VISIBLE);
@@ -73,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             addItemButton.setVisibility(View.VISIBLE);
         }
         else {
-            firebaseHelper.updateUid(null);
             signInButton.setVisibility(View.VISIBLE);
             signUpButton.setVisibility(View.VISIBLE);
             signOutButton.setVisibility(View.INVISIBLE);
@@ -104,26 +99,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Password must be at least 6 char long", Toast.LENGTH_SHORT).show();
         }
         else {
-            firebaseHelper.getmAuth().signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "signInWithEmail:success");
-                                firebaseHelper.updateUid(firebaseHelper.getmAuth().getCurrentUser().getUid());
-                                updateIfLoggedIn();
-                                firebaseHelper.attachReadDataToUser();
-                                // start intent to go to screen to update lists
-                                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
-                                startActivity(intent);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "signInWithEmail:failure", task.getException());
-
-                            }
-                        }
-                    });
+            // code to sign in user
         }
     }
 
@@ -149,29 +125,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Password must be at least 6 char long", Toast.LENGTH_SHORT).show();
         }
         else {
-            // sign up
-            firebaseHelper.getmAuth().createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = firebaseHelper.getmAuth().getCurrentUser();
-                                Log.d(TAG, user.getUid());
-                                firebaseHelper.addUserToFirestore(name, user.getUid());
-                                firebaseHelper.updateUid(firebaseHelper.getmAuth().getCurrentUser().getUid());
-                                Log.d(TAG, "New uid is: " + user.getUid());
-                                Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
-                                startActivity(intent);
-
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-
-                            }
-                        }
-                    });
+            // code to sign up user
 
         }
 
@@ -185,9 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signOutUser(View v) {
-        Log.d(TAG, "About to try to sign out user");
-        firebaseHelper.getmAuth().getInstance().signOut();
-        firebaseHelper.updateUid(null);
+        // firebaseHelper code to sign out
 
         nameET.setText("");
         emailET.setText("");
@@ -197,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void showList(View v) {
         Intent intent = new Intent(MainActivity.this, ViewListActivity.class);
-        ArrayList<WishListItem> myList = firebaseHelper.getWishListItems();
-        intent.putParcelableArrayListExtra("LIST", myList);
+        // use firebaseHelperCode to get List of data to display
+
         startActivity(intent);
     }
 

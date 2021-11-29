@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class ViewListActivity extends AppCompatActivity {
 
-  //  private TextView viewListTV;
-    private FirebaseHelper firebaseHelper;
     private ArrayList<WishListItem> myList;
     private static final String TAG = "Denna";
 
@@ -25,15 +23,9 @@ public class ViewListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
 
-      //  viewListTV = findViewById(R.id.viewListTV);
-
         // Get ArrayList of WishListItems from MainActivity (that was pulled from firestore)
         Intent intent = getIntent();
-        myList = MainActivity.firebaseHelper.getWishListItems();
-  //      String text = getListText(myList);
-//        viewListTV.setText(text);
-
-        // Later will add a listView
+        // get list of data from firebasehelper
 
         // The ArrayAdapter is what will take the data from the ArrayList and feed it to the ListView
         ArrayAdapter<WishListItem> listAdapter = new ArrayAdapter<>(
@@ -60,16 +52,12 @@ public class ViewListActivity extends AppCompatActivity {
 
 
 
-
-        // ************
     }
 
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        myList = MainActivity.firebaseHelper.getWishListItems();
-        String text = getListText(myList);
-       // viewListTV.setText(text);
+        // udpates list with firebasehelper code
 
     }
 
