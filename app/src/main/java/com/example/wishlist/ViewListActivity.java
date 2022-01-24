@@ -49,27 +49,5 @@ public class ViewListActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-    }
-
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        // udpates list with firebasehelper code
-
-    }
-
-
-    public String getListText(ArrayList<WishListItem> list) {
-        Log.i(TAG, "Inside getListText " + list.size());
-        String str = "\n";
-        for (WishListItem w: list) {
-            str += w.toString() + "\n";
-        }
-
-        Log.i(TAG, str.toString());
-        return str;
     }
 }
