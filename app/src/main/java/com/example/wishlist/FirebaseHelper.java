@@ -92,7 +92,7 @@ public class FirebaseHelper {
     certain things from occuring until after the onSuccess is finished.
      */
 
-    private void readData(FirestoreCallback firestoreCallback)
+    private void readData(FirestoreCallback firestoreCallback) {
 
 }
 
