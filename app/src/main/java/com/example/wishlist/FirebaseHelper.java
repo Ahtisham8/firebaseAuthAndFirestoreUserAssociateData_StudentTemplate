@@ -61,13 +61,6 @@ public class FirebaseHelper {
 
     }
 
-    public void editData(WishListItem w) {
-
-    }
-
-    public void deleteData(WishListItem w) {
-
-    }
 
     public void addUserToFirestore(String name, String newUID) {
 
@@ -78,6 +71,14 @@ public class FirebaseHelper {
     }
 
     public ArrayList<WishListItem> getWishListItems() {
+
+    }
+    
+    public void editData(WishListItem w) {
+
+    }
+
+    public void deleteData(WishListItem w) {
 
     }
 
