@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView signUpResultTextView;
     private Button signInButton, signUpButton, signOutButton, showListButton, addItemButton;
 
-
+    // create public static FirebaseHelper variable
 
 
     @Override
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // create fireaseHelper variable
+        // instantiate FirebaseHelper var
 
         // Make references to xml elements
         nameET = findViewById(R.id.nameTV);
@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateIfLoggedIn(){
-        //firebaseHelper code to check for current user
+        // Create reference to current user using firebaseHelper variable
+
         if (user != null) {
             signInButton.setVisibility(View.INVISIBLE);
             signUpButton.setVisibility(View.INVISIBLE);
@@ -99,7 +100,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Password must be at least 6 char long", Toast.LENGTH_SHORT).show();
         }
         else {
+
             // code to sign in user
+/* 
+ * Enter Firebase Code here CODE here
+ */
+
         }
     }
 
@@ -126,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             // code to sign up user
+            
+ /* 
+ * Enter Firebase Code here CODE here
+ */
+
 
         }
 
@@ -141,6 +152,11 @@ public class MainActivity extends AppCompatActivity {
     public void signOutUser(View v) {
         // firebaseHelper code to sign out
 
+/* 
+ * Enter Firebase Code here CODE here
+ */
+        
+        
         nameET.setText("");
         emailET.setText("");
         passwordET.setText("");
@@ -151,6 +167,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ViewListActivity.class);
         // use firebaseHelperCode to get List of data to display
 
+/* 
+ * Enter Firebase Code here CODE here
+ */
+        
         startActivity(intent);
     }
 
