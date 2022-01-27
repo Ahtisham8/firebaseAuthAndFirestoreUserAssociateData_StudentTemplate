@@ -44,7 +44,7 @@ import java.util.concurrent.Executor;
 public class FirebaseHelper {
     public final String TAG = "Denna";
     private static String uid = null;            // var will be updated for currently signed in user
-    // inside MainActivity with the mAuth var
+    
 
 
     private ArrayList<WishListItem> myItems = new ArrayList<>();
@@ -90,7 +90,7 @@ public class FirebaseHelper {
     This video is good!!!   Basically he talks about what it means for tasks to be asychronous
     and how you can create an interface and then using that interface pass an object of the interface
     type from a callback method and access it after the callback method.  It also allows you to delay
-    certain things from occuring until after the onSuccess is finished.
+    certain things from occurring until after the onSuccess is finished.
      */
 
     private void readData(FirestoreCallback firestoreCallback) {
