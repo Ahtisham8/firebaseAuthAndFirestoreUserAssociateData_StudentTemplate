@@ -44,6 +44,7 @@ public class AddItemActivity extends AppCompatActivity {
 
         WishListItem wishListItem = new WishListItem(itemName, itemLocation, itemPriority);
         //insert firebaseHelper code to addData
+        MainActivity.firebaseHelper.addData(wishListItem);
         nameET.setText("");
         locationET.setText("");
 

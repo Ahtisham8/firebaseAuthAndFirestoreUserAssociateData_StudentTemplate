@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private Button signInButton, signUpButton, signOutButton, showListButton, addItemButton;
 
     // create public static FirebaseHelper variable
+    // this will allow ALL the other activities to access this var by referring to it as:
+    // MainActivity.firebaseHelper
+    public static FirebaseHelper firebaseHelper;
 
 
     @Override
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // instantiate FirebaseHelper var
+        firebaseHelper = new FirebaseHelper();
 
         // Make references to xml elements
         nameET = findViewById(R.id.nameTV);
@@ -53,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    /*
+    This is one of the life cycle methods that is built into AS.  It is called automatically
+    everytime the app screen starts up.  To learn more about life cycles, search "Android Life Cycle"
+     */
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -61,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateIfLoggedIn(){
         // Create reference to current user using firebaseHelper variable
+        FirebaseUser user = firebaseHelper.getmAuth().getCurrentUser();
 
         if (user != null) {
             signInButton.setVisibility(View.INVISIBLE);
@@ -68,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             signOutButton.setVisibility(View.VISIBLE);
             showListButton.setVisibility(View.VISIBLE);
             addItemButton.setVisibility(View.VISIBLE);
+            firebaseHelper.attachReadDataToUser();
             signUpResultTextView.setText(user.getEmail() + " signed in");
         }
         else {
@@ -76,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             signOutButton.setVisibility(View.INVISIBLE);
             showListButton.setVisibility(View.INVISIBLE);
             addItemButton.setVisibility(View.INVISIBLE);
-            signUpResultTextView.setText("No one signed in");
+            signUpResultTextView.setText("No on signed in");
             nameET.setText("");
             emailET.setText("");
             passwordET.setText("");
@@ -103,9 +113,30 @@ public class MainActivity extends AppCompatActivity {
         else {
 
             // code to sign in user
-/* 
- * Enter Firebase Code here CODE here
- */
+            firebaseHelper.getmAuth().signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) {
+                                // sign in succeeded, update UI with users info
+                                // We could also make a user var first instead of this long parameter
+                                firebaseHelper.updateUid(firebaseHelper.getmAuth().getUid());
+                                updateIfLoggedIn(); // update UI
+                                Log.i(TAG, email + " logged in");
+
+                                // This is needed to help with asych method calls in firebase
+                                firebaseHelper.attachReadDataToUser();
+
+                                // Use an intent to switch screens if desired
+                                // you can also explicitly state the name of sending intent here instead of 'this'
+                                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Log.d(TAG, "Sign in failed for " + email + " ," + password);
+                            }
+                        }
+                    });
 
         }
     }
@@ -133,12 +164,36 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             // code to sign up user
-            
- /* 
- * Enter Firebase Code here CODE here
- */
 
+            firebaseHelper.getmAuth().createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // sign up worked and a user was created we want a reference to our user
+                                FirebaseUser user = firebaseHelper.getmAuth().getCurrentUser();
 
+                                // add a document to firestore with the users name and their unique UID from auth account
+                                firebaseHelper.addUserToFirestore(name, user.getUid());
+
+                                // update the uid var in FirebaseHelper so we know which user is logged in
+                                firebaseHelper.updateUid(user.getUid());
+
+                                // This is needed to help with asych method calls in firebase
+                                firebaseHelper.attachReadDataToUser();
+
+                                //update UI
+                                updateIfLoggedIn();
+                                // include code to go to a new screen with an intent
+                                Intent intent = new Intent(getApplicationContext(), AddItemActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                // sign up fails
+                                Log.d(TAG, "Sign up failed");
+                            }
+                        }
+                    });
         }
 
         updateIfLoggedIn();
@@ -152,12 +207,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void signOutUser(View v) {
         // firebaseHelper code to sign out
+        firebaseHelper.getmAuth().signOut();
 
-/* 
- * Enter Firebase Code here CODE here
- */
-        
-        
+        // update the uid var we are maintaining in FirebaseHelper class
+        firebaseHelper.updateUid(null);     //note that null is not in quotes
+
         nameET.setText("");
         emailET.setText("");
         passwordET.setText("");
@@ -167,11 +221,8 @@ public class MainActivity extends AppCompatActivity {
     public void showList(View v) {
         Intent intent = new Intent(MainActivity.this, ViewListActivity.class);
         // use firebaseHelperCode to get List of data to display
-
-/* 
- * Enter Firebase Code here CODE here
- */
-        
+        ArrayList<WishListItem> myList = firebaseHelper.getWishListItems();
+        intent.putParcelableArrayListExtra("LIST", myList);
         startActivity(intent);
     }
 

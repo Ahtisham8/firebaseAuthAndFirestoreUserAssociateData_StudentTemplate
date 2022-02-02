@@ -25,7 +25,10 @@ public class ViewListActivity extends AppCompatActivity {
 
         // Get ArrayList of WishListItems from MainActivity (that was pulled from firestore)
         Intent intent = getIntent();
-        // get list of data from firebasehelper
+
+
+        // get list of data from firebasehelper *********
+        myList = MainActivity.firebaseHelper.getWishListItems();
 
         // The ArrayAdapter is what will take the data from the ArrayList and feed it to the ListView
         ArrayAdapter<WishListItem> listAdapter = new ArrayAdapter<>(
