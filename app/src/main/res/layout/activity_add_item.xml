@@ -11,6 +11,7 @@
         android:id="@+id/itemNameET"
         style="@style/myEditText"
         android:layout_marginTop="@dimen/topMarginTopItem"
+        android:background="@drawable/shape"
         android:ems="10"
         android:hint="Name of item"
         android:inputType="textPersonName"
@@ -22,6 +23,7 @@
     <EditText
         android:id="@+id/itemLocation"
         style="@style/myEditText"
+        android:background="@drawable/shape"
         android:ems="10"
         android:hint="Store or url"
         android:inputType="textPersonName"
