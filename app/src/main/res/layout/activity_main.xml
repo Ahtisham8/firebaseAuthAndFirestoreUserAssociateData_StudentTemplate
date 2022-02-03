@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/camel"
     tools:context=".MainActivity">
-
 
 
     <EditText
         android:id="@+id/nameTV"
         style="@style/myEditText"
+        android:layout_marginTop="@dimen/topMarginTopItem"
         android:hint="Enter Name to Create an account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/topMarginTopItem" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/emailTV"
@@ -53,16 +53,16 @@
     <Button
         android:id="@+id/signInButton"
         style="@style/myButton"
-        android:text="Sign in"
         android:onClick="signIn"
+        android:text="Sign in"
         app:layout_constraintStart_toStartOf="@+id/passwordTV"
         app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
 
     <Button
         android:id="@+id/showListButton"
         style="@style/myButton"
-        android:text="Show List"
         android:onClick="showList"
+        android:text="Show List"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/passwordTV"
         app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
@@ -70,16 +70,16 @@
     <Button
         android:id="@+id/signUpButton"
         style="@style/myButton"
-        android:text="Sign Up"
         android:onClick="signUp"
+        android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="@+id/passwordTV"
         app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
 
     <Button
         android:id="@+id/addItemButton"
         style="@style/myButton"
-        android:text="Add Item"
         android:onClick="addData"
+        android:text="Add Item"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/passwordTV"
         app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
@@ -105,8 +105,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

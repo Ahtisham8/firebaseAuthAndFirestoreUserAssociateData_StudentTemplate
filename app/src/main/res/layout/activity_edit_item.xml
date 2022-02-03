@@ -4,36 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/camel"
     tools:context=".EditItemActivity">
 
     <Button
         android:id="@+id/signOutButton2"
         style="@style/myButton"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:onClick="goHome"
         android:text="Home"
+        android:textSize="19sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signOutButton" />
 
     <EditText
         android:id="@+id/itemNameET"
         style="@style/myEditText"
+        android:layout_marginTop="@dimen/topMarginTopItem"
         android:ems="10"
         android:hint="Name of item"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/topMarginTopItem"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/itemLocation"
         style="@style/myEditText"
+        android:background="@drawable/shape"
+        android:backgroundTint="@color/camel"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Store or url"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemNameET" />
@@ -41,6 +49,8 @@
     <Button
         android:id="@+id/addItemButton"
         style="@style/submitButton"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="@dimen/buttonHeight"
         android:onClick="updateData"
         android:text="Edit item"
         app:layout_constraintEnd_toEndOf="@+id/itemLocation"
@@ -49,19 +59,22 @@
     <Button
         android:id="@+id/showListButton"
         style="@style/myButton"
-        android:text="Delete"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="@dimen/buttonHeight"
         android:onClick="deleteItem"
+        android:text="Delete"
+        app:cornerRadius="1dp"
         app:layout_constraintStart_toStartOf="@+id/itemLocation"
         app:layout_constraintTop_toBottomOf="@+id/itemLocation" />
 
     <Button
         android:id="@+id/signOutButton"
         style="@style/myButton"
+        android:layout_marginTop="120dp"
         android:onClick="showList"
         android:text="Show List"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="120dp"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemLocation" />
