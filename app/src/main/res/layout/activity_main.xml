@@ -12,6 +12,7 @@
         android:id="@+id/nameTV"
         style="@style/myEditText"
         android:layout_marginTop="@dimen/topMarginTopItem"
+        android:background="@drawable/shape"
         android:hint="Enter Name to Create an account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -21,6 +22,7 @@
     <EditText
         android:id="@+id/emailTV"
         style="@style/myEditText"
+        android:background="@drawable/shape"
         android:hint="Enter Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +31,7 @@
     <EditText
         android:id="@+id/passwordTV"
         style="@style/myEditText"
+        android:background="@drawable/shape"
         android:hint="Enter Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +64,7 @@
     <Button
         android:id="@+id/showListButton"
         style="@style/myButton"
+        android:letterSpacing=".1"
         android:onClick="showList"
         android:text="Show List"
         android:visibility="invisible"
@@ -78,6 +82,7 @@
     <Button
         android:id="@+id/addItemButton"
         style="@style/myButton"
+        android:letterSpacing=".1"
         android:onClick="addData"
         android:text="Add Item"
         android:visibility="invisible"
@@ -99,6 +104,7 @@
         android:id="@+id/signOutButton"
         style="@style/myButton"
         android:layout_marginTop="120dp"
+        android:letterSpacing=".1"
         android:onClick="signOutUser"
         android:text="Sign Out"
         android:visibility="visible"

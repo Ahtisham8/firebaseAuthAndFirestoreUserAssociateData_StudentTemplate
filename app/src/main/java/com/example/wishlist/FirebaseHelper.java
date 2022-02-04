@@ -126,7 +126,7 @@ public class FirebaseHelper {
         addData(wish, new FirestoreCallback() {
             @Override
             public void onCallback(ArrayList<WishListItem> myList) {
-                Log.i(TAG, "Indide addData, finished: " + myList.toString());
+                Log.i(TAG, "Inside addData, finished: " + myList.toString());
             }
         });
     }
