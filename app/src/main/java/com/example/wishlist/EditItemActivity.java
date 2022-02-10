@@ -34,6 +34,7 @@ public class EditItemActivity extends AppCompatActivity {
         w.setItemLocation(newLocation);
         w.setItemName(newName);
         // firebaseHelper code
+        MainActivity.firebaseHelper.editData(w);
         Toast.makeText(this, "Data updated", Toast.LENGTH_SHORT).show();
     }
 
@@ -46,6 +47,7 @@ public class EditItemActivity extends AppCompatActivity {
 
     public void deleteItem(View v) {
         // firebaseHelper code
+        MainActivity.firebaseHelper.deleteData(w);
         Toast.makeText(this, "Data updated", Toast.LENGTH_SHORT).show();
     }
 
